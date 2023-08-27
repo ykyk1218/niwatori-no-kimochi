@@ -11,6 +11,13 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/node": "^18.17.3",
-    "nuxt": "^3.6.5"
+    "nuxt": "^3.6.5",
+    "typescript": "^5.2.2",
+    "vue-tsc": "^1.8.8"
+  },
+  "dependencies": {
+    "@vue/composition-api": "^1.7.2",
+    "sass": "^1.66.1",
+    "vuetify": "^3.4.0-alpha.0"
   }
 }

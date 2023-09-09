@@ -4,6 +4,7 @@ services:
       context: docker
     ports:
       - 3000:3000
+      - 24678:24678
     volumes:
       - ./nuxt:/niwatori-no-kimochi:cached
       - node_modules:/niwatori-no-kimochi/node_modules

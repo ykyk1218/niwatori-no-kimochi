@@ -15,13 +15,10 @@
 </script>
 
 <template>
-  <v-app>
+  <div>
     <v-app-bar color="primary" :elevation="14">
       <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>My files</v-toolbar-title>
-      <v-app-bar-title>
-        <h1>にわとりの気持ち</h1>
-      </v-app-bar-title>
+      <v-app-bar-title>にわとりの気持ち</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-btn icon="mdi-heart"></v-btn>
       <v-btn icon="mdi-magnify"></v-btn>
@@ -35,5 +32,5 @@
       <v-list :items="items">
       </v-list>
     </v-navigation-drawer>
-  </v-app>
+  </div>
 </template>

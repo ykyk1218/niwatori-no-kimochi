@@ -1,7 +1,8 @@
 <template>
-  <Header />
-  <div>
-    default layout
-    <slot />
-  </div>
+  <v-layout>
+    <Header />
+    <v-main>
+      <slot />
+    </v-main>
+  </v-layout>
 </template>

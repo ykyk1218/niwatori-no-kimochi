@@ -1,6 +1,26 @@
 <script setup lang="ts">
-  const message = 'Hello world!'
-  const list: string[] = ['list1', 'list2', 'list3']
+  import { ref } from "vue";
+
+  const message: string = 'Hello world!'
+  const dialog: boolean = ref(false)
+  const photosForSlider: string[] = [
+    {
+      imageUrl: '/images/photos/DSC09546.jpg',
+      alt: 'firework1',
+    },
+    {
+      imageUrl: '/images/photos/DSC09546.jpg',
+      alt: 'firework1',
+    },
+    {
+      imageUrl: '/images/photos/DSC09546.jpg',
+      alt: 'firework1',
+    },
+    {
+      imageUrl: '/images/photos/DSC09546.jpg',
+      alt: 'firework1',
+    },
+  ]
   onMounted(() => {
     console.log("mounted")
   })
@@ -8,40 +28,74 @@
   useHead({
     title: 'にわとりの気持ち | Top'
   })
+
+  function openModal() {
+    console.log("open modal")
+  }
 </script>
 
 <template>
   <div>
-    <h1>{{ message }}</h1>
-    <v-icon>mdi-twitter</v-icon>
     <v-parallax src="/images/photos/DSC08226.jpg">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
-        <h1 class="text-h4 font-weight-thin mb-4">
-          Vuetify
-        </h1>
-        <h4 class="subheading">
-          Build your application today!
+        <h1 class="text-h4 font-weight-thin mb-4">にわとりの気持ち</h1>
+        <h4 class="subheading">My portfolio
         </h4>
       </div>
     </v-parallax>
-    <v-parallax src="/images/photos/DSC08226.jpg">
-      <div class="d-flex flex-column fill-height justify-center align-center text-white">
-        <v-sheet class="mx-auto" elevation="3" max-width="1200">
-          <v-slide-group class="pa-4" show-arrows>
-            <v-slide-group-item v-for="n in list" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
-              <v-card class="ma-5">
-                <p>{{ n }}</p>
-                <v-img
-                  :width="300"
-                  aspect-ratio="16/9"
-                  cover
-                  src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
-                ></v-img> 
-              </v-card>
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
-      </div>
+    <v-parallax class="second" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+      <h2>My Photos</h2>
+      <v-sheet class="mx-auto slide-parent" elevation="3" >
+        <v-slide-group class="pa-4" show-arrows>
+          <v-slide-group-item v-for="photo in photosForSlider" :key="photo" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-card class="ma-5">
+              <p>{{ photo['alt'] }}</p>
+              <v-img
+                :width="300"
+                aspect-ratio="16/9"
+                cover
+                :src="photo['imageUrl']"
+                @click="dialog = true"
+                class="slide-images"
+              ></v-img> 
+            </v-card>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+      <v-container>
+        <v-row>
+          <v-col>
+            <v-sheet min-width="400">
+              <h3>Work</h3>
+              <v-list>
+                <v-list-item>プログラマー</v-list-item>
+                <v-list-item>
+                  <v-list>
+                    <v-list-item>Ruby</v-list-item>
+                  </v-list>
+                </v-list-item>
+              </v-list>
+            </v-sheet>
+          </v-col>
+          <v-col>
+            <v-sheet min-width="400">
+              <h3>Photo</h3>
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
+      <v-dialog
+        v-model="dialog"
+        max-width="1200px"
+      >
+        <v-carousel>
+          <v-carousel-item
+            v-for="(photo, i) in photosForSlider"
+            :key="i"
+            :src="photo['imageUrl']"
+          ></v-carousel-item>
+        </v-carousel>
+      </v-dialog>
     </v-parallax>
   </div>
 </template>
@@ -52,41 +106,16 @@ section {
   min-height: 100vh;
 }
 
-.parallax {
-  position: absolute;
-  top: 0;
-  display: none;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-}
-
-.first {
-  background-image: url("/images/photos/DSC08226.jpg")
-}
-
 .second {
-  background-image: url("/images/photos/DSC08226.jpg")
+  margin: auto;
+  padding: 5px;
 }
 
-.parallax-text {
-  position: absolute;
-  font-size: 30px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
+.slide-parent {
+  max-width: 1000px;
 }
 
-.active {
-  position: fixed;
-  top: 0;
+.slide-images {
+  cursor: pointer;
 }
-
-.block {
-  display: block;
-}
-
 </style>

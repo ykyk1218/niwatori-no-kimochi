@@ -1,10 +1,15 @@
 <script setup lang="ts">
   import { ref } from "vue";
-  import snapPhotosForSlider from '~/plugins/slide_images.ts'
+  import snapPhotosForSlider from '~/plugins/slide_images'
 
   const message: string = 'Hello world!'
-  const dialog: boolean = ref(false)
-  const photos = snapPhotosForSlider()
+  const dialog: Ref<boolean> = ref(false)
+  const photos: { imageUrl: string; alt: string; }[] = snapPhotosForSlider()
+
+  interface photosInterface {
+    imageUrl: string
+    alt: string
+  }
    
   onMounted(() => {
     console.log("mounted")
@@ -34,7 +39,7 @@
         <div class="mx-auto slide-parent" elevation="3">
           <div>
             <v-slide-group show-arrows>
-              <v-slide-group-item v-for="photo in photos" :key="photo" v-slot="{ isSelected, toggle, selectedClass }">
+              <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
                 <v-card class="pb-2 ma-5 elevation-0">
                   <v-img
                     :width="500"
@@ -56,7 +61,7 @@
         <v-sheet class="mx-auto slide-parent" elevation="3" >
           <div>
             <v-slide-group class="pa-4" show-arrows>
-              <v-slide-group-item v-for="photo in photos" :key="photo" v-slot="{ isSelected, toggle, selectedClass }">
+              <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
                 <v-card class="ma-5">
                   <p>{{ photo['alt'] }}</p>
                   <v-img
@@ -77,7 +82,7 @@
         <h2>Tablephotos</h2>
         <v-sheet class="mx-auto slide-parent" elevation="3" >
           <v-slide-group class="pa-4" show-arrows>
-            <v-slide-group-item v-for="photo in photos" :key="photo" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
               <v-card class="ma-5">
                 <p>{{ photo['alt'] }}</p>
                 <v-img
@@ -97,7 +102,7 @@
         <h2>Flowers</h2>
         <v-sheet class="mx-auto slide-parent" elevation="3" >
           <v-slide-group class="pa-4" show-arrows>
-            <v-slide-group-item v-for="photo in photos" :key="photo" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
               <v-card class="ma-5">
                 <p>{{ photo['alt'] }}</p>
                 <v-img

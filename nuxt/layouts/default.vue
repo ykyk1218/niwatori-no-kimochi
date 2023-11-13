@@ -2,7 +2,9 @@
   <v-layout>
     <Header />
     <v-main>
-      <slot />
+      <div id="app">
+        <slot />
+      </div>
     </v-main>
   </v-layout>
 </template>

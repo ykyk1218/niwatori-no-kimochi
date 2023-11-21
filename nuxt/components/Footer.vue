@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import { ref } from "vue";
 
-  const icons: [] = [
+  const icons: [string[], string[]]= [
     ['mdi-twitter', 'https://twitter.com/ykyk1218_camera'],
     ['mdi-instagram', 'https://www.instagram.com/photo_yoshiki']
   ]
 
-  function openSns(url) {
+  function openSns(url: string) {
     window.open(url, '_blank')
   }
 </script>

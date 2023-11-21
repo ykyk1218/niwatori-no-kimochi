@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <v-layout class="flex-column">
     <Header />
     <v-main>
       <div id="app">

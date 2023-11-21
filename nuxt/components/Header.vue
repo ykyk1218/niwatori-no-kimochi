@@ -16,14 +16,9 @@
 
 <template>
   <div>
-    <v-app-bar color="primary" :elevation="14">
+    <header class="text-red-lighten-4">
       <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-app-bar-title>にわとりの気持ち</v-app-bar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon="mdi-heart"></v-btn>
-      <v-btn icon="mdi-magnify"></v-btn>
-      <v-btn icon="mdi-dots-vertical"></v-btn>
-    </v-app-bar>
+    </header>
     <v-navigation-drawer
       v-model="drawer"
       location="left"
@@ -34,3 +29,10 @@
     </v-navigation-drawer>
   </div>
 </template>
+
+<style language="scss" scoped>
+header {
+  position: fixed;
+  z-index: 1000;
+}
+</style>

@@ -1,16 +1,7 @@
 <script setup lang="ts">
   import { ref } from "vue";
-  import snapPhotosForSlider from '~/plugins/slide_images'
+  import SlideImages from '~/components/SlideImages.vue'
 
-  const message: string = 'Hello world!'
-  const dialog: Ref<boolean> = ref(false)
-  const photos: { imageUrl: string; alt: string; }[] = snapPhotosForSlider()
-
-  interface photosInterface {
-    imageUrl: string
-    alt: string
-  }
-   
   onMounted(() => {
     console.log("mounted")
   })
@@ -26,134 +17,72 @@
 
 <template>
   <div>
-    <v-parallax src="/movies/fireflower.mp4">
+    <section>
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
-        <h1 class="text-h4 font-weight-thin mb-4">にわとりの気持ち</h1>
-        <h4 class="subheading">Yoshiki Kobayashi
+        <h1 class="z-index-10 text-h4 font-weight-thin mb-4">にわとりの気持ち</h1>
+        <h4 class="z-index-10 subheading">Yoshiki Kobayashi
         </h4>
       </div>
-    </v-parallax>
-    <v-parallax class="second pa-5" src="hoge">
       <div>
-        <h2 class="text-center text-h2">My Photos</h2>
-        <div class="mx-auto slide-parent" elevation="3">
-          <div>
-            <v-slide-group show-arrows>
-              <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
-                <v-card class="pb-2 ma-5 elevation-0">
-                  <v-img
-                    :width="500"
-                    aspect-ratio="16/9"
-                    cover
-                    :src="photo['imageUrl']"
-                    @click="dialog = true"
-                    class="slide-images"
-                  ></v-img> 
-                  <p class="text-center pt-2">{{ photo['alt'] }}</p>
-                </v-card>
-              </v-slide-group-item>
-            </v-slide-group>
-          </div>
-        </div>
+        <video autoplay muted loop class="top-movie">
+          <source src="/movies/top.mp4" type="video/mp4">
+          お使いのブラウザはビデオタグをサポートしていません。
+        </video>
       </div>
-      <div class="mt-8">
-        <h2 class="pb-2">ポートレート</h2>
-        <v-sheet class="mx-auto slide-parent" elevation="3" >
-          <div>
-            <v-slide-group class="pa-4" show-arrows>
-              <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
-                <v-card class="ma-5">
-                  <p>{{ photo['alt'] }}</p>
-                  <v-img
-                    :width="500"
-                    aspect-ratio="16/9"
-                    cover
-                    :src="photo['imageUrl']"
-                    @click="dialog = true"
-                    class="slide-images"
-                  ></v-img> 
-                </v-card>
-              </v-slide-group-item>
-            </v-slide-group>
-          </div>
-        </v-sheet>
-      </div>
-      <div>
-        <h2>Tablephotos</h2>
-        <v-sheet class="mx-auto slide-parent" elevation="3" >
-          <v-slide-group class="pa-4" show-arrows>
-            <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
-              <v-card class="ma-5">
-                <p>{{ photo['alt'] }}</p>
-                <v-img
-                  :width="500"
-                  aspect-ratio="16/9"
-                  cover
-                  :src="photo['imageUrl']"
-                  @click="dialog = true"
-                  class="slide-images"
-                ></v-img> 
-              </v-card>
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
-      </div>
-      <div>
-        <h2>Flowers</h2>
-        <v-sheet class="mx-auto slide-parent" elevation="3" >
-          <v-slide-group class="pa-4" show-arrows>
-            <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
-              <v-card class="ma-5">
-                <p>{{ photo['alt'] }}</p>
-                <v-img
-                  :width="500"
-                  aspect-ratio="16/9"
-                  cover
-                  :src="photo['imageUrl']"
-                  @click="dialog = true"
-                  class="slide-images"
-                ></v-img> 
-              </v-card>
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>  
-      </div>
-
-
-
-
-
+    </section>
+    <div>
+      <v-parallax src="/images/photos/DSC09546.jpg">
+        <SlideImages title="flowers" dir="photos" />
+        <SlideImages title="flowers" dir="photos" />
+        <SlideImages title="flowers" dir="photos" />
+        <SlideImages title="flowers" dir="photos" />
+        <SlideImages title="flowers" dir="photos" />
+      </v-parallax>
+    </div>
+    <div>
       <div class="w-75 mx-auto">
-        <h2>About me</h2>
-
         <v-container>
           <v-row>
             <v-col>
-              <v-sheet min-width="400">
-                <h3>Camera</h3>
-                <v-list lines="one">
-                  <v-list-item>
-                    <v-list>
-                      <v-list-item>Sony α7III</v-list-item>
-                      <v-list-item>Sony FX3</v-list-item>
-                    </v-list>
-                  </v-list-item>
-                </v-list>
-                <v-list>
-                  <v-list-item>lens</v-list-item>
-                  <v-list-item>
-                    <v-list>
-                      <v-list-item>Sonnar T* FE 55mm F1.8 ZA</v-list-item>
-                      <v-list-item>FE 70-300mm F4.5-5.6 G OSS</v-list-item>
-                    </v-list>
-                  </v-list-item>
-                </v-list>
-              </v-sheet>
+              <h2 class="pb-4">About me</h2>
+              <v-card
+                prepend-avatar="/images/profile/my-profile.jpg"
+                title="Yoshiki.Kobayashi"
+              >
+                <v-card-text>
+                  写真を撮るようになって、夕日の綺麗さと影の面白さに気付くようになりました。
+                  近場で自分しか知らないスポットを探すのも好きですが、いわゆるSNS映えの絶景スポットも好きです。<br><br>
+                  あんまりジャンルが決まっていないので、「なに撮っているんですか」と聞かれるたびに困っていましたが、季節物を撮っていることが多いですと答えます。<br>
+                  四季っていいですよね。
+                  <br>
+
+                </v-card-text>
+              </v-card>
+              <v-card
+                prepend-icon="mdi-camera"
+                title="Camera"
+                class="mt-8"
+                >
+                <v-card-text>
+                  <p class="py-0">Sony α7III</p>
+                  <p class="py-0">Sony FX3</p>
+                  <div class="mt-4">
+                    <p class="font-weight-bold">lens</p>
+                    <p>Sonnar T* FE 55mm F1.8 ZA</p>
+                    <p>FE 35mm F1.8</p>
+                    <p>FE 90mm F2.8 Macro G OSS</p>
+                    <p>FE 70-300mm F4.5-5.6 G OSS</p>
+                    <p>TAMRON 17-28mm F/2.8 Di III RXD</p>
+                    <p>TAMRON 28-200mm F/2.8-5.6 Di III RXD</p>
+                    <p>Voigtlander NOKTON classic 35mm F1.4</p>
+                  </div>
+                </v-card-text>
+              </v-card>
             </v-col>
 
             <v-col>
               <v-sheet min-width="400">
-                <h3>Camera History</h3>
+                <h2 class="pb-4">Camera History</h2>
                 <v-timeline align="start">
                   <v-timeline-item>
                     <template v-slot:opposite>
@@ -198,6 +127,16 @@
                   <v-timeline-item>
                     <template v-slot:opposite>
                       <v-card>
+                        <v-card-title>2018.04</v-card-title>
+                        <v-card-text>
+                          ちゃんと写真を撮り始める
+                        </v-card-text>
+                      </v-card>
+                    </template>
+                  </v-timeline-item>
+                  <v-timeline-item>
+                    <template v-slot:opposite>
+                      <v-card>
                         <v-card-title>2018.02</v-card-title>
                         <v-card-text>
                           写真教室に通う
@@ -221,30 +160,34 @@
             </v-col>
           </v-row>
         </v-container>
-        <v-dialog
-          v-model="dialog"
-          max-width="1200px"
-        >
-          <v-carousel>
-            <v-carousel-item
-              v-for="(photo, i) in $snapPhotosForSlider"
-              :key="i"
-              :src="photo['imageUrl']"
-            ></v-carousel-item>
-          </v-carousel>
-        </v-dialog>
       </div>
-    </v-parallax>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 section {
+  height: 100vh;
   position: relative;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
-.slide-images {
-  cursor: pointer;
+section::-webkit-scrollbar {
+  display: none;
 }
+
+.top-movie {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+
+}
+
+.z-index-10 {
+  z-index: 10;
+}
+
+
 </style>

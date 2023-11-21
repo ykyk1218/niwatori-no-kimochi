@@ -6,5 +6,6 @@
         <slot />
       </div>
     </v-main>
+    <Footer />
   </v-layout>
 </template>

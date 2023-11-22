@@ -1,9 +1,15 @@
 <script setup lang="ts">
-  import { ref } from "vue";
+  import { useDisplay } from 'vuetify'
+  import { ref } from "vue"
   import SlideImages from '~/components/SlideImages.vue'
 
+  const { mobile } = useDisplay()
+
   onMounted(() => {
-    console.log("mounted")
+    const section = document.querySelector('#first-section')
+
+    // 判定処理をtemplate側に書くとモバイル判定がうまくいかないのか、変になる
+    section.style.height = `${mobile.value ? '25vh' : '100vh'}`
   })
 
   useHead({
@@ -17,18 +23,18 @@
 
 <template>
   <div>
-    <section>
+    <section id="first-section">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
-        <h1 class="z-index-10 text-h4 font-weight-thin mb-4">にわとりの気持ち</h1>
+        <h1 class="z-index-10 text-h5 text-lg-h4 font-weight-thin mb-4">にわとりの気持ち</h1>
         <h4 class="z-index-10 subheading">Yoshiki Kobayashi
         </h4>
       </div>
-      <div>
+      <v-sheet :min-height="mobile ? 'auto' : '100%'">
         <video autoplay muted loop class="top-movie">
           <source src="/movies/top.mp4" type="video/mp4">
           お使いのブラウザはビデオタグをサポートしていません。
         </video>
-      </div>
+      </v-sheet>
     </section>
     <div>
       <v-parallax src="/images/photos/DSC09546.jpg">
@@ -166,28 +172,22 @@
 </template>
 
 <style lang="scss" scoped>
-section {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
 
-section::-webkit-scrollbar {
-  display: none;
+section {
+  position: relative;
 }
 
 .top-movie {
   position: absolute;
   top: 0;
   left: 0;
-  min-height: 100%;
   min-width: 100%;
-
+  object-fit: cover;
+  width: 100%;
 }
 
 .z-index-10 {
   z-index: 10;
 }
-
 
 </style>

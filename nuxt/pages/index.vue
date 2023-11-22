@@ -6,10 +6,13 @@
   const { mobile } = useDisplay()
 
   onMounted(() => {
-    const section = document.querySelector('#first-section')
+    // Note: https://developer.hatenastaff.com/entry/2020/12/12/121212
+    const section = document.querySelector<HTMLElement>('#first-section')
 
     // 判定処理をtemplate側に書くとモバイル判定がうまくいかないのか、変になる
-    section.style.height = `${mobile.value ? '25vh' : '100vh'}`
+    if(section) {
+      section.style.height = `${mobile.value ? '25vh' : '100vh'}`
+    }
   })
 
   useHead({

@@ -89,8 +89,19 @@
     </div>
 
     <v-theme-provider theme="dark">
-      <v-dialog v-model="dialog" min-height=80vh max-width=1200>
-        <v-img :src="selectedPhotoImageUrl"></v-img>
+      <v-dialog v-model="dialog" class="h-screen">
+        <v-card class="pb-13">
+          <v-card-title class="text-right">
+            <v-btn
+              icon="mdi-close-circle-outline"
+              text="Close"
+              @click="dialog = false"
+              class="text-button"
+            ></v-btn>
+          </v-card-title>
+          <img :src="selectedPhotoImageUrl" class="w-75 mx-auto">
+        </v-card>
+
       </v-dialog>
     </v-theme-provider>
   </div>

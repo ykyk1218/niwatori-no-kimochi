@@ -35,6 +35,7 @@
         getDownloadURL(itemRef).then((url) => {
           photos.value.push( {imageUrl: url, name: name})
           photos.value.sort((a,b)=>{
+            // firestorage api ではソートの指定ができないので、取得後ファイル名でソートしている
             if(a.name < b.name) return -1;
             if(a.name > b.name) return 1;
             return 0;

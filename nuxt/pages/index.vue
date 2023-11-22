@@ -38,11 +38,9 @@
     </section>
     <div>
       <v-parallax src="/images/photos/DSC09546.jpg">
-        <SlideImages title="flowers" dir="photos" />
-        <SlideImages title="flowers" dir="photos" />
-        <SlideImages title="flowers" dir="photos" />
-        <SlideImages title="flowers" dir="photos" />
-        <SlideImages title="flowers" dir="photos" />
+        <SlideImages title="flowers" dir="photos/flowers" />
+        <SlideImages title="fireflowers" dir="photos/fireflowers" />
+        <SlideImages title="portrait" dir="photos/portrait" />
       </v-parallax>
     </div>
     <div>

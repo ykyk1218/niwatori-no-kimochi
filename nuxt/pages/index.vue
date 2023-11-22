@@ -46,8 +46,8 @@
       </v-parallax>
     </div>
     <div>
-      <div class="w-75 mx-auto">
-        <v-container>
+      <div>
+        <v-container class="mx-auto" :class="mobile ? 'w-100' : 'w-75'">
           <v-row>
             <v-col>
               <h2 class="pb-4">About me</h2>
@@ -87,7 +87,7 @@
             </v-col>
 
             <v-col>
-              <v-sheet min-width="400">
+              <v-sheet>
                 <h2 class="pb-4">Camera History</h2>
                 <v-timeline align="start">
                   <v-timeline-item>

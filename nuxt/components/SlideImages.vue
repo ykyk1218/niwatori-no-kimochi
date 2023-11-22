@@ -1,6 +1,9 @@
 <script setup lang="ts">
   import { ref } from "vue";
+  import { useDisplay } from 'vuetify'
   import { getStorage, ref as firebaseRef, listAll, getDownloadURL } from "firebase/storage";
+
+  const { mobile } = useDisplay()
 
   interface Props {
     title: string,
@@ -49,15 +52,15 @@
 
 <template>
   <div class="mt-8">
-    <h2 class="text-center text-h2">{{ title }}</h2>
+    <h2 class="text-center text-h4 text-lg-h2">{{ title }}</h2>
     <div class="mx-auto slide-parent" elevation="3">
       <div>
         <v-slide-group show-arrows>
           <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
             <v-card class="ma-5 elevation-0">
               <v-img
-                :width="500"
-                :height="300"
+                :width="mobile ? '100vw' : 500"
+                :height="mobile ? '200' : 300"
                 aspect-ratio="16/9"
                 cover
                 :src="photo['imageUrl']"

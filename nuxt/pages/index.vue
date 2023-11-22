@@ -33,7 +33,7 @@
         </h4>
       </div>
       <v-sheet :min-height="mobile ? 'auto' : '100%'">
-        <video autoplay muted loop class="top-movie">
+        <video playsinline autoplay muted loop class="top-movie">
           <source src="/movies/top.mp4" type="video/mp4">
           お使いのブラウザはビデオタグをサポートしていません。
         </video>

@@ -17,8 +17,8 @@
 <template>
   <div>
     <header class="text-red-lighten-4">
-      <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" class="vertical-align-text-bottom"></v-app-bar-nav-icon>
       <img src="/images/logo.png" alt="logo" class="logo" width=50 />
+      <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" class="vertical-align-text-bottom"></v-app-bar-nav-icon>
     </header>
     <v-navigation-drawer
       v-model="drawer"

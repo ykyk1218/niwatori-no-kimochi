@@ -32,7 +32,7 @@
   <div>
     <section id="first-section">
       <div class="d-flex flex-column fill-height justify-center align-center text-white">
-        <h1 class="z-index-10 text-h5 text-lg-h4 font-weight-thin mb-4">にわとりの気持ち</h1>
+        <h1 class="z-index-10 text-h5 text-lg-h3 font-weight-thin mb-4">にわとりの気持ち</h1>
         <h4 class="z-index-10 subheading">Yoshiki Kobayashi
         </h4>
       </div>

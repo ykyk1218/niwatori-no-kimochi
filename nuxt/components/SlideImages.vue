@@ -56,16 +56,15 @@
     <h2 class="text-center text-h4 text-lg-h2">{{ title }}</h2>
     <div class="mx-auto slide-parent" elevation="3">
       <div>
-        <v-slide-group show-arrows>
+        <v-slide-group :show-arrows="mobile ? false : true">
           <v-slide-group-item v-for="photo in photos" :key="photo['imageUrl']" v-slot="{ isSelected, toggle, selectedClass }">
             <v-card class="ma-5 elevation-0">
               <v-img
-                :width="mobile ? '100vw' : 500"
+                :width="mobile ? '300' : 500"
                 :height="mobile ? '200' : 300"
                 aspect-ratio="16/9"
                 cover
                 :src="photo['imageUrl']"
-                layzy-src="https://picsum.photos/10/6"
                 @click="dialog = true; selectedPhotoImageUrl = photo['imageUrl']"
                 class="slide-images"
               >
@@ -88,22 +87,21 @@
       </div>
     </div>
 
-    <v-theme-provider theme="dark">
-      <v-dialog v-model="dialog" class="h-screen">
-        <v-card class="pb-13">
-          <v-card-title class="text-right">
-            <v-btn
-              icon="mdi-close-circle-outline"
-              text="Close"
-              @click="dialog = false"
-              class="text-button"
-            ></v-btn>
-          </v-card-title>
-          <img :src="selectedPhotoImageUrl" class="w-75 mx-auto">
-        </v-card>
+    <v-dialog v-model="dialog" class="h-screen">
+      <v-card class="pb-13">
+        <v-card-title class="text-right">
+          <v-btn
+            icon="mdi-close-circle-outline"
+            text="Close"
+            elevation="0"
+            @click="dialog = false"
+            class="text-button"
+          ></v-btn>
+        </v-card-title>
+        <img :src="selectedPhotoImageUrl" class="mx-auto" :class="mobile ? 'w-100' : 'w-75'">
+      </v-card>
 
-      </v-dialog>
-    </v-theme-provider>
+    </v-dialog>
   </div>
 </template>
 

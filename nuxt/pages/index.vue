@@ -1,7 +1,5 @@
 <script setup lang="ts">
   import { useDisplay } from 'vuetify'
-  import { ref } from "vue"
-  import SlideImages from '~/components/SlideImages.vue'
 
   const { mobile } = useDisplay()
 

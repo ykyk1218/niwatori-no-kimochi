@@ -39,13 +39,16 @@
         </video>
       </v-sheet>
     </section>
-    <div>
-      <v-parallax src="/images/photos/DSC09546.jpg">
+    <section>
+      <v-parallax src="/images/top/cats.jpg">
+        <SlideImages title="cherry-blossom" dir="photos/cherry-blossom" />
         <SlideImages title="flowers" dir="photos/flowers" />
         <SlideImages title="fireflowers" dir="photos/fireflowers" />
         <SlideImages title="portrait" dir="photos/portrait" />
+        <SlideImages title="sunset" dir="photos/sunset" />
+        <SlideImages title="night-view" dir="photos/night-view" />
       </v-parallax>
-    </div>
+    </section>
     <div>
       <div>
         <v-container class="mx-auto" :class="mobile ? 'w-100' : 'w-75'">
@@ -176,6 +179,7 @@
 
 section {
   position: relative;
+  min-height: 25vh;
 }
 
 .top-movie {
@@ -184,11 +188,10 @@ section {
   left: 0;
   min-width: 100%;
   object-fit: cover;
-  width: 100%;
+  height: 100%;
 }
 
 .z-index-10 {
   z-index: 10;
 }
-
 </style>

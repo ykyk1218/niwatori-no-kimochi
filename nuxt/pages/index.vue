@@ -13,6 +13,9 @@
     if(section) {
       section.style.height = `${mobile.value ? '25vh' : '100vh'}`
     }
+
+    switchVideoSrc()
+
   })
 
   useHead({
@@ -21,6 +24,18 @@
 
   function openModal() {
     console.log("open modal")
+  }
+
+  function switchVideoSrc() {
+    const topMovie = document.querySelector<HTMLSourceElement>('.top-movie')
+    if(topMovie) {
+      if(mobile.value) {
+        topMovie.src = '/movies/top_sm.mp4'
+        return
+      }else{
+        topMovie.src = '/movies/top.mp4'
+      }
+    }
   }
 </script>
 
@@ -33,8 +48,7 @@
         </h4>
       </div>
       <v-sheet :min-height="mobile ? 'auto' : '100%'">
-        <video playsinline autoplay muted loop class="top-movie">
-          <source src="/movies/top.mp4" type="video/mp4">
+        <video playsinline autoplay muted loop src="" class="top-movie">
           お使いのブラウザはビデオタグをサポートしていません。
         </video>
       </v-sheet>

@@ -17,7 +17,8 @@
 <template>
   <div>
     <header class="text-red-lighten-4">
-      <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" class="vertical-align-text-bottom"></v-app-bar-nav-icon>
+      <img src="/images/logo.png" alt="logo" class="logo" width=50 />
     </header>
     <v-navigation-drawer
       v-model="drawer"
@@ -34,5 +35,9 @@
 header {
   position: fixed;
   z-index: 1000;
+}
+
+.vertical-align-text-bottom {
+  vertical-align: text-bottom;
 }
 </style>

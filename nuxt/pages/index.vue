@@ -63,8 +63,8 @@
         <SlideImages title="night-view" dir="photos/night-view" />
       </v-parallax>
     </section>
-    <div>
-      <div>
+    <section>
+      <section>
         <v-container class="mx-auto" :class="mobile ? 'w-100' : 'w-75'">
           <v-row>
             <v-col>
@@ -184,8 +184,13 @@
             </v-col>
           </v-row>
         </v-container>
-      </div>
-    </div>
+      </section>
+      <section class="mb-4">
+        <v-container>
+          <ContactForm />
+        </v-container>
+      </section>
+    </section>
   </div>
 </template>
 

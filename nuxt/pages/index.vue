@@ -4,16 +4,7 @@
   const { mobile } = useDisplay()
 
   onMounted(() => {
-    // Note: https://developer.hatenastaff.com/entry/2020/12/12/121212
-    const section = document.querySelector<HTMLElement>('#first-section')
-
-    // 判定処理をtemplate側に書くとモバイル判定がうまくいかないのか、変になる
-    if(section) {
-      section.style.height = `${mobile.value ? '25vh' : '100vh'}`
-    }
-
     switchVideoSrc()
-
   })
 
   useHead({
@@ -45,7 +36,14 @@
         <h4 class="z-index-10 subheading">Yoshiki Kobayashi
         </h4>
       </div>
-      <v-sheet :min-height="mobile ? 'auto' : '100%'">
+      <v-sheet class="video-wrapper" >
+        <img src="/images/top/top_movie_loading.jpg" alt="top" class="movie-pre-image"/>
+        <v-progress-circular
+          indeterminate
+          color="grey-darken-3"
+          class="progress-circular"
+        ></v-progress-circular>
+
         <video playsinline autoplay muted loop src="" class="top-movie">
           お使いのブラウザはビデオタグをサポートしていません。
         </video>
@@ -194,21 +192,47 @@
 
 <style lang="scss" scoped>
 
-section {
+#first-section {
+  aspect-ratio: 16 / 8;
   position: relative;
+  width: 100%;
   min-height: 25vh;
 }
 
 .top-movie {
+  aspect-ratio: 16 / 8;
   position: absolute;
   top: 0;
   left: 0;
   min-width: 100%;
-  object-fit: cover;
   height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .z-index-10 {
   z-index: 10;
 }
+
+.video-wrapper {
+  aspect-ratio: 16 / 8;
+
+  .movie-pre-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: block;
+    object-fit: cover;
+  }
+  .progress-circular {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+  }
+}
+
 </style>

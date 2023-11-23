@@ -52,7 +52,7 @@
 </script>
 
 <template>
-  <div class="mt-8">
+  <div class="mt-8 slide-group-component">
     <h2 class="text-center text-h4 text-lg-h2">{{ title }}</h2>
     <div class="mx-auto slide-parent" elevation="3">
       <div>
@@ -108,6 +108,10 @@
 </template>
 
 <style lang="scss" scoped>
+.slide-group-component {
+  min-height: 300px;
+}
+
 .slide-images {
   cursor: pointer;
 }

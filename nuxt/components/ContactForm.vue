@@ -38,6 +38,7 @@
   <v-sheet class="mx-auto mt-8">
     <h2 class="text-center text-h4 text-lg-h2">Contact</h2>
     <v-form name="contact" class="mt-4" validate-on="submit lazy" netlify>
+      <input type="hidden" name="form-name" value="contact" />
       <v-text-field
         v-model="name"
         :rules="nameRules"

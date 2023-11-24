@@ -13,6 +13,25 @@
   ]
   const { mobile } = useDisplay()
 
+  const handleSubmit = (event: Event) => {
+    event.preventDefault();
+
+    const myForm = event.target as HTMLFormElement;
+    const formData:any = new FormData(myForm);
+    
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
+  }
+
+  onMounted(() => {
+    document.querySelector("form")?.addEventListener("submit", handleSubmit);
+  })
+
 </script>
 
 <template>

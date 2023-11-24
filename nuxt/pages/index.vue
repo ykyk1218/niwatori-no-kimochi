@@ -181,7 +181,7 @@
           </v-row>
         </v-container>
       </section>
-      <section class="mb-4">
+      <section id="contact-section" class="mb-4">
         <v-container>
           <ContactForm />
         </v-container>

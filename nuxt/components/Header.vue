@@ -1,17 +1,6 @@
 <script setup lang="ts">
   import { ref } from "vue";
-
   const drawer = ref(false)
-  const items = [
-    {
-      title: 'Foo',
-      value: 'foo'
-    },
-    {
-      title: 'Bar',
-      value: 'bar'
-    }
-  ]
 </script>
 
 <template>
@@ -22,10 +11,23 @@
     </header>
     <v-navigation-drawer
       v-model="drawer"
-      location="left"
+      location="right"
       temporary
     >
-      <v-list :items="items">
+      <v-list>
+        <v-list-item>
+          <a href="https://twitter.com/ykyk1218_camera" target="_blank">
+            <v-icon class="text-grey-darken-1" icon="mdi-twitter"></v-icon>
+          </a>
+        </v-list-item>
+        <v-list-item>
+          <a href="https://www.instagram.com/photo_yoshiki" target="_blank">
+            <v-icon class="text-grey-darken-1" icon="mdi-instagram"></v-icon>
+          </a>
+        </v-list-item>
+        <v-list-item prepend-icon="mdi-email-outline">
+          <a class="text-grey-darken-1 text-decoration-none" href="#contact-section">Contact</a>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </div>

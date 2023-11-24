@@ -18,7 +18,6 @@
 
     const myForm = event.target as HTMLFormElement;
     const formData:any = new FormData(myForm);
-    
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -41,6 +40,7 @@
       <input type="hidden" name="form-name" value="contact" />
       <v-text-field
         v-model="name"
+        name="name"
         :rules="nameRules"
         label="User name"
         :class="mobile ? 'w-100' : 'w-50'"
@@ -49,6 +49,7 @@
 
       <v-textarea
         v-model="message"
+        name="message"
         :rules="messgageRules"
         label="Message"
       ></v-textarea>

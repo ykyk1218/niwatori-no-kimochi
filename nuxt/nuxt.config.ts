@@ -12,11 +12,12 @@ export default defineNuxtConfig ({
         prefix: 'og: https://ogp.me/ns#'
       },
       meta: [
-        { name: 'description', content: '個人的に撮影の記録をまとめたサイトです'},
+        { hid: 'description', name: 'description', content: '個人的に撮影の記録をまとめたサイトです'},
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'にわとりの気持ち' },
         { property: 'og:description', content: '個人的に撮影の記録をまとめたサイトです' },
         { property: 'og:image', content: 'https://main--lustrous-pothos-2a2cfe.netlify.app/images/logo.png' },
+        { name: 'twitter:card', content: 'summary' }
       ]
     }
   },

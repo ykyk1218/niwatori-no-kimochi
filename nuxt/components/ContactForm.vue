@@ -14,22 +14,29 @@
   ]
   const { mobile } = useDisplay()
 
-  const handleSubmit = (event: Event) => {
+  const handleSubmit = async(event: Event) => {
     event.preventDefault();
 
     const myForm = event.target as HTMLFormElement;
     const formData:any = new FormData(myForm);
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    const { data, pending, error, refresh } = await useFetch('/', {
+      method: 'POST',
       body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      onRequestError: ({ request, options, error }) => {
+        console.log(error)
+      },
+      onResponse({ request, response, options }) {
         thxDialog.value = true
         name.value = ''
-        message.value = '' 
-      })
-      .catch((error) => console.error(error));
+        message.value = ''
+      },
+      onResponseError({ request, response, options }) {
+        alert("エラーが発生しました。お手数ですが再度投稿をお願いいたします。")
+      }
+    })
   }
 
   onMounted(() => {
@@ -41,7 +48,7 @@
 <template>
   <v-sheet class="mx-auto mt-8">
     <h2 class="text-center text-h4 text-lg-h2">Contact</h2>
-    <v-form name="contact" class="mt-4" validate-on="submit lazy" netlify>
+    <v-form name="contact" class="mt-4" validate-on="submit lazy" @submit.prevent netlify>
       <input type="hidden" name="form-name" value="contact" />
       <v-text-field
         v-model="name"
@@ -75,17 +82,17 @@
       </v-container>
     </v-form>
 
-    <v-dialog width="500">
-      <v-card title="Dialog">
+    <v-dialog v-model="thxDialog" width="350">
+      <v-card title="Success">
         <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <p>お問い合わせありがとうございます!</p>
         </v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
 
           <v-btn
-            text="Close Dialog"
+            text="閉じる"
             @click="thxDialog = false"
           ></v-btn>
         </v-card-actions>

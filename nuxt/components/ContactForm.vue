@@ -86,7 +86,7 @@
 
           <v-btn
             text="Close Dialog"
-            @click="thxDialog.value = false"
+            @click="thxDialog = false"
           ></v-btn>
         </v-card-actions>
       </v-card>

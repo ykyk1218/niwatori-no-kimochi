@@ -5,9 +5,9 @@
 
 <template>
   <div>
-    <header class="text-red-lighten-4">
+    <header class="text-red-lighten-4 w-100">
       <img src="/images/logo.png" alt="logo" class="logo" width=50 />
-      <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" class="vertical-align-text-bottom"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" class="float-right vertical-align-text-bottom text-grey-darken-1"></v-app-bar-nav-icon>
     </header>
     <v-navigation-drawer
       v-model="drawer"

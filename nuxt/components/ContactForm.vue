@@ -24,7 +24,7 @@
       body: new URLSearchParams(formData).toString(),
     })
       .then(() => console.log("Form successfully submitted"))
-      .catch((error) => alert(error));
+      .catch((error) => console.error(error));
   }
 
   onMounted(() => {
@@ -42,7 +42,7 @@
         v-model="name"
         name="name"
         :rules="nameRules"
-        label="User name"
+        label="名前"
         :class="mobile ? 'w-100' : 'w-50'"
         class="js-name-text-field"
       ></v-text-field>
@@ -51,7 +51,8 @@
         v-model="message"
         name="message"
         :rules="messgageRules"
-        label="Message"
+        label="伝えたいこと"
+        placeholder="なんでもお気軽にどうぞ！"
       ></v-textarea>
      
       <v-container class="ma-0 pa-0">

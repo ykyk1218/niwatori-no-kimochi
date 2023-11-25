@@ -4,6 +4,7 @@
   const name = ref<string>('')
   const message = ref<string>('')
   const loading = ref<boolean>(false)
+  const thxDialog: Ref<boolean> = ref(false)
 
   const nameRules = [
     (v: string) => !!v || 'Name is required',
@@ -23,7 +24,11 @@
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => console.log("Form successfully submitted"))
+      .then(() => {
+        thxDialog.value = true
+        name.value = ''
+        message.value = '' 
+      })
       .catch((error) => console.error(error));
   }
 
@@ -69,5 +74,22 @@
         </v-row>
       </v-container>
     </v-form>
+
+    <v-dialog width="500">
+      <v-card title="Dialog">
+        <v-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            text="Close Dialog"
+            @click="thxDialog.value = false"
+          ></v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-sheet>
 </template>

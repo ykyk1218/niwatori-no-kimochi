@@ -27,9 +27,5 @@
     </div>
 
     <v-divider></v-divider>
-
-    <div>
-      2023 — <strong>Vuetify</strong>
-    </div>
   </v-footer>
 </template>

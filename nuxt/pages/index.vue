@@ -11,10 +11,6 @@
     title: 'にわとりの気持ち | Top'
   })
 
-  function openModal() {
-    console.log("open modal")
-  }
-
   function switchVideoSrc() {
     const topMovie = document.querySelector<HTMLSourceElement>('.top-movie')
     if(topMovie) {
@@ -57,6 +53,7 @@
         <SlideImages title="portrait" dir="photos/portrait" />
         <SlideImages title="sunset" dir="photos/sunset" />
         <SlideImages title="night-view" dir="photos/night-view" />
+        <SlideImages title="table-photo" dir="photos/tablephoto" />
       </v-parallax>
     </section>
     <section>

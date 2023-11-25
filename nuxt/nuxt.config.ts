@@ -16,7 +16,7 @@ export default defineNuxtConfig ({
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'にわとりの気持ち' },
         { property: 'og:description', content: '個人的に撮影の記録をまとめたサイトです' },
-        { property: 'og:image', content: 'https://localhost:3000/logo.png' },
+        { property: 'og:image', content: 'https://main--lustrous-pothos-2a2cfe.netlify.app/images/logo.png' },
       ]
     }
   },
